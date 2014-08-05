@@ -15,7 +15,7 @@ Object.defineProperty(Student, 'collection', {
 
 Object.defineProperty(Student.prototype, 'average', {
   get: function(){
-    if(!this.tests){return 0;}
+    if(!this.tests.length){return 0;}
 
     var sum = this.tests.reduce(function(total, test){return total + test;});
     return (sum / this.tests.length);
@@ -58,6 +58,8 @@ Student.prototype.insert = function(cb){
 };
 
 Student.prototype.addTest = function(score, cb){
+  score = parseFloat(score);
+
   this.tests.push(score);
   Student.collection.update({_id:this._id}, {$push:{tests:score}}, cb);
 };

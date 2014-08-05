@@ -1,0 +1,9 @@
+extends ../shared/template
+block content
+  h2 New Student
+
+  form(method='post', action='/students')
+    input(name='name', type='text', placeholder='Bob Smith', autofocus=true)
+    input(name='color', type='color', value='#ff0000')
+    button Add Student
+

@@ -1,0 +1,8 @@
+extends ../shared/template
+block content
+  h2 Add Test to Student: #{student.name}
+
+  form(method='post', action='/students/#{student._id}/test')
+    input(name='score', type='number', placeholder='88', autofocus=true)
+    button Add Test
+
